@@ -18,6 +18,7 @@ class _MediatorWidgetState extends State<MediatorWidget> {
   ApiCallResponse? toEmail;
   TextEditingController? emailAddressController;
   TextEditingController? passwordController;
+
   late bool passwordVisibility;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -27,6 +28,13 @@ class _MediatorWidgetState extends State<MediatorWidget> {
     emailAddressController = TextEditingController();
     passwordController = TextEditingController();
     passwordVisibility = false;
+  }
+
+  @override
+  void dispose() {
+    emailAddressController?.dispose();
+    passwordController?.dispose();
+    super.dispose();
   }
 
   @override
@@ -128,6 +136,20 @@ class _MediatorWidgetState extends State<MediatorWidget> {
                               ),
                               borderRadius: BorderRadius.circular(8),
                             ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
                             filled: true,
                             fillColor: Colors.white,
                             contentPadding:
@@ -194,6 +216,20 @@ class _MediatorWidgetState extends State<MediatorWidget> {
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                 color: Color(0xFFDBE2E7),
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
                                 width: 2,
                               ),
                               borderRadius: BorderRadius.circular(8),
@@ -299,6 +335,7 @@ class _MediatorWidgetState extends State<MediatorWidget> {
                     onPressed: () async {
                       GoRouter.of(context).prepareAuthEvent();
                       await signOut();
+
                       context.goNamedAuth('login', mounted);
                     },
                     text: 'log out\n',

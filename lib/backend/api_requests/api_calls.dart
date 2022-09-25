@@ -4,6 +4,8 @@ import 'api_manager.dart';
 
 export 'api_manager.dart' show ApiCallResponse;
 
+const _kPrivateApiFunctionName = 'ffPrivateApiCall';
+
 class SendEmailCall {
   static Future<ApiCallResponse> call({
     String? toEmail = 'toemail',
@@ -44,14 +46,26 @@ class SendEmailCall {
       headers: {
         'Authorization': 'Bearer 2UTBnMXSQoWSMlr1bv8oDw',
       },
-      params: {
-        'toEmail': toEmail,
-        'subject': subject,
-        'content': content,
-      },
+      params: {},
       body: body,
       bodyType: BodyType.JSON,
       returnBody: true,
     );
   }
+}
+
+class ApiPagingParams {
+  int nextPageNumber = 0;
+  int numItems = 0;
+  dynamic lastResponse;
+
+  ApiPagingParams({
+    required this.nextPageNumber,
+    required this.numItems,
+    required this.lastResponse,
+  });
+
+  @override
+  String toString() =>
+      'PagingParams(nextPageNumber: $nextPageNumber, numItems: $numItems, lastResponse: $lastResponse,)';
 }

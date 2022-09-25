@@ -311,6 +311,7 @@ class _InvoicesWidgetState extends State<InvoicesWidget> {
                         onPressed: () async {
                           GoRouter.of(context).prepareAuthEvent();
                           await signOut();
+
                           context.goNamedAuth('login', mounted);
                         },
                         text: 'log out',

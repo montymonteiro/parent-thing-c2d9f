@@ -541,6 +541,7 @@ class _MediaWidgetState extends State<MediaWidget> {
                 onPressed: () async {
                   GoRouter.of(context).prepareAuthEvent();
                   await signOut();
+
                   context.goNamedAuth('login', mounted);
                 },
                 text: 'log out',

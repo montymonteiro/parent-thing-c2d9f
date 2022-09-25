@@ -146,27 +146,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'emailsent',
               requireAuth: true,
               builder: (context, params) => EmailsentWidget(),
-            ),
-            FFRoute(
-              name: 'ChatPage',
-              path: 'chatPage',
-              requireAuth: true,
-              builder: (context, params) => ChatPageWidget(),
-            ),
-            FFRoute(
-              name: 'Chat',
-              path: 'chat',
-              requireAuth: true,
-              asyncParams: {
-                'chatUser': getDoc('users', UsersRecord.serializer),
-              },
-              builder: (context, params) => ChatWidget(
-                chatUser: params.getParam('chatUser', ParamType.Document),
-                chatRef: params.getParam(
-                    'chatRef', ParamType.DocumentReference, 'chats'),
-                user: params.getParam(
-                    'user', ParamType.DocumentReference, 'chat_messages'),
-              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),
@@ -341,12 +320,10 @@ class FFRoute {
               ? Container(
                   color: Color(0xFFB3E5FC),
                   child: Center(
-                    child: Builder(
-                      builder: (context) => Image.asset(
-                        'assets/images/PArentThingApp-Logo.png',
-                        width: 150,
-                        fit: BoxFit.contain,
-                      ),
+                    child: Image.asset(
+                      'assets/images/PArentThingApp-Logo.png',
+                      width: 150,
+                      fit: BoxFit.contain,
                     ),
                   ),
                 )

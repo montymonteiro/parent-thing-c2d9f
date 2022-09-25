@@ -68,12 +68,10 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
       ? Container(
           color: Color(0xFFB3E5FC),
           child: Center(
-            child: Builder(
-              builder: (context) => Image.asset(
-                'assets/images/PArentThingApp-Logo.png',
-                width: 150,
-                fit: BoxFit.contain,
-              ),
+            child: Image.asset(
+              'assets/images/PArentThingApp-Logo.png',
+              width: 150,
+              fit: BoxFit.contain,
             ),
           ),
         )
@@ -92,13 +90,6 @@ final pageBuilderMap = <String, Future<Widget> Function(Map<String, dynamic>)>{
   'faqs': (data) async => FaqsWidget(),
   'termsandconditions': (data) async => TermsandconditionsWidget(),
   'emailsent': (data) async => EmailsentWidget(),
-  'ChatPage': (data) async => ChatPageWidget(),
-  'Chat': (data) async => ChatWidget(
-        chatUser: await getDocumentParameter(
-            data, 'chatUser', UsersRecord.serializer),
-        chatRef: getParameter(data, 'chatRef'),
-        user: getParameter(data, 'user'),
-      ),
 };
 
 bool hasMatchingParameters(Map<String, dynamic> data, Set<String> params) =>

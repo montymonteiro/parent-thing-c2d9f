@@ -17,6 +17,7 @@ class _LoginWidgetState extends State<LoginWidget> {
   TextEditingController? emailTextController1;
   TextEditingController? textfieldController;
   TextEditingController? passwordController;
+
   late bool passwordVisibility;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -28,6 +29,14 @@ class _LoginWidgetState extends State<LoginWidget> {
     textfieldController = TextEditingController();
     passwordController = TextEditingController();
     passwordVisibility = false;
+  }
+
+  @override
+  void dispose() {
+    emailTextController1?.dispose();
+    textfieldController?.dispose();
+    passwordController?.dispose();
+    super.dispose();
   }
 
   @override
@@ -141,6 +150,20 @@ class _LoginWidgetState extends State<LoginWidget> {
                             ),
                             borderRadius: BorderRadius.circular(0),
                           ),
+                          errorBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0x00000000),
+                              width: 1,
+                            ),
+                            borderRadius: BorderRadius.circular(0),
+                          ),
+                          focusedErrorBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0x00000000),
+                              width: 1,
+                            ),
+                            borderRadius: BorderRadius.circular(0),
+                          ),
                           filled: true,
                           fillColor:
                               FlutterFlowTheme.of(context).primaryBtnText,
@@ -229,6 +252,20 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 ),
                                 borderRadius: BorderRadius.circular(0),
                               ),
+                              errorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0x00000000),
+                                  width: 2,
+                                ),
+                                borderRadius: BorderRadius.circular(0),
+                              ),
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0x00000000),
+                                  width: 2,
+                                ),
+                                borderRadius: BorderRadius.circular(0),
+                              ),
                               filled: true,
                               fillColor: Colors.white,
                               contentPadding:
@@ -295,6 +332,20 @@ class _LoginWidgetState extends State<LoginWidget> {
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                 color: Color(0xFFDBE2E7),
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(0),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(0),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
                                 width: 2,
                               ),
                               borderRadius: BorderRadius.circular(0),

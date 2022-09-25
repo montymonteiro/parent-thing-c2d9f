@@ -225,6 +225,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                         onPressed: () async {
                           GoRouter.of(context).prepareAuthEvent();
                           await signOut();
+
                           context.goNamedAuth('login', mounted);
                         },
                         text: 'log out',
@@ -256,33 +257,33 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Expanded(
-                      child: InkWell(
-                        onTap: () async {
-                          context.pushNamed(
-                            'ChatPage',
-                            extra: <String, dynamic>{
-                              kTransitionInfoKey: TransitionInfo(
-                                hasTransition: true,
-                                transitionType: PageTransitionType.fade,
-                                duration: Duration(milliseconds: 3),
-                              ),
-                            },
-                          );
-                        },
-                        child: Container(
-                          width: 100,
-                          height: 100,
-                          decoration: BoxDecoration(
-                            color: Color(0xFF040000),
-                            border: Border.all(
-                              color: Color(0xFFBBDEFB),
-                              width: 3,
-                            ),
+                      child: Container(
+                        width: 100,
+                        height: 100,
+                        decoration: BoxDecoration(
+                          color: Color(0xFF040000),
+                          border: Border.all(
+                            color: Color(0xFFBBDEFB),
+                            width: 3,
                           ),
-                          child: Align(
-                            alignment: AlignmentDirectional(0, 0),
+                        ),
+                        child: Align(
+                          alignment: AlignmentDirectional(0, 0),
+                          child: InkWell(
+                            onTap: () async {
+                              context.pushNamed(
+                                'help',
+                                extra: <String, dynamic>{
+                                  kTransitionInfoKey: TransitionInfo(
+                                    hasTransition: true,
+                                    transitionType: PageTransitionType.fade,
+                                    duration: Duration(milliseconds: 3),
+                                  ),
+                                },
+                              );
+                            },
                             child: Text(
-                              'chat',
+                              'help',
                               style: FlutterFlowTheme.of(context)
                                   .bodyText1
                                   .override(
@@ -490,15 +491,24 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                         ),
                         child: Align(
                           alignment: AlignmentDirectional(0.05, 0),
-                          child: Text(
-                            'help',
-                            style:
-                                FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Open Sans Condensed',
-                                      color: Color(0xFFBBDEFB),
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w500,
-                                    ),
+                          child: InkWell(
+                            onTap: () async {
+                              GoRouter.of(context).prepareAuthEvent();
+                              await signOut();
+
+                              context.goNamedAuth('login', mounted);
+                            },
+                            child: Text(
+                              'log out',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyText1
+                                  .override(
+                                    fontFamily: 'Open Sans Condensed',
+                                    color: Color(0xFFBBDEFB),
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                            ),
                           ),
                         ),
                       ),

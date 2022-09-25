@@ -12,5 +12,3 @@ export 'faqs/faqs_widget.dart' show FaqsWidget;
 export 'termsandconditions/termsandconditions_widget.dart'
     show TermsandconditionsWidget;
 export 'emailsent/emailsent_widget.dart' show EmailsentWidget;
-export 'chat_page/chat_page_widget.dart' show ChatPageWidget;
-export 'chat/chat_widget.dart' show ChatWidget;
